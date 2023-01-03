@@ -25,9 +25,9 @@ const Home: NextPage = () => {
           A Product Listing Page built with Next.js, Tailwind.css and Apollo GraphQL 
         </p>
 
+        <Filter />
       </header>
       <main>
-        <Filter />
         <ProductGrid />
         <Pager />
       </main>

@@ -27,7 +27,7 @@ type props = {
 }
 
 export function AppProvider({ children }: props) {
-  const [numOfCols, setNumOfCols] = useState<number>(3);
+  const [numOfCols, setNumOfCols] = useState<number>(2);
   // const [filter, setFilter] = useState<any>({
   //   brand: '',
   //   priceOrder: "",
