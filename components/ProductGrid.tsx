@@ -1,3 +1,5 @@
+import { useApp } from "../context/AppContext"
+
 const products = [
   {
     id: 2,
@@ -74,6 +76,8 @@ const products = [
 ]
 
 export default function ProductGrid() {
+  const { numOfCols } = useApp();
+
   return (
     <div className="bg-white">
       <div className="mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">

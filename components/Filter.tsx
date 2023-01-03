@@ -1,6 +1,10 @@
 import React from 'react'
+import { useApp } from '../context/AppContext'
 
 const Filter = () => {
+  const { numOfCols, updateNumberOfCols } = useApp();
+  console.log(numOfCols)
+
   return (
     <div className="w-full p-5 bg-white">
       <div className="relative">
@@ -24,11 +28,11 @@ const Filter = () => {
       </div>
 
       <div>
-        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
-        <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+        <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
+        <select onChange={(e) => updateNumberOfCols(parseInt(e.target.value))} className="hidden lg:flex px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
           <option value="">Number of Cols</option>
           {Array.from(Array(7).keys()).map((item, index) => (
-            <option key={index} value="fully-furnished">
+            <option key={index} value={item + 1}>
               {item + 1}
             </option>
           ))}
