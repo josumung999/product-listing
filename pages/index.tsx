@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import Pager from '../components/Pager'
 import ProductGrid from '../components/ProductGrid'
 
 const Home: NextPage = () => {
@@ -24,7 +25,10 @@ const Home: NextPage = () => {
         </p>
 
       </header>
-      <ProductGrid />
+      <main>
+        <ProductGrid />
+        <Pager />
+      </main>
 
       <footer className="flex h-24 w-full items-center justify-center border-t">
         <a

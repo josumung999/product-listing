@@ -6,7 +6,7 @@ const products = [
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
     price: '$35',
-    color: 'Black',
+    brand: 'Adidas',
   },
   {
     id: 3,
@@ -15,7 +15,7 @@ const products = [
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
     price: '$35',
-    color: 'Black',
+    brand: 'Adidas',
   },
   {
     id: 1,
@@ -24,7 +24,7 @@ const products = [
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
     price: '$35',
-    color: 'Black',
+    brand: 'Adidas',
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ const products = [
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
     price: '$35',
-    color: 'Black',
+    brand: 'Adidas',
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ const products = [
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
     price: '$35',
-    color: 'Black',
+    brand: 'Adidas',
   },
   {
     id: 6,
@@ -51,7 +51,7 @@ const products = [
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
     price: '$35',
-    color: 'Black',
+    brand: 'Adidas',
   },
   {
     id: 7,
@@ -60,7 +60,7 @@ const products = [
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
     price: '$35',
-    color: 'Black',
+    brand: 'Adidas',
   },
   {
     id: 8,
@@ -69,7 +69,7 @@ const products = [
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
     price: '$35',
-    color: 'Black',
+    brand: 'Adidas',
   },
 ]
 
@@ -80,8 +80,8 @@ export default function ProductGrid() {
         <h2 className="text-2xl font-bold tracking-tight text-gray-900">Popular Products</h2>
 
         <div className="mt-6 grid grid-cols-2 gap-y-10 gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-          {products.map((product) => (
-            <div key={product.id} className="group relative">
+          {products.map((product, index) => (
+            <div key={index} className="group relative">
               <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
                 <img
                   src={product.imageSrc}
@@ -92,12 +92,12 @@ export default function ProductGrid() {
               <div className="mt-4 flex justify-between">
                 <div>
                   <h3 className="text-sm text-gray-700">
-                    <a href={product.href}>
+                    <a>
                       <span aria-hidden="true" className="absolute inset-0" />
                       {product.name}
                     </a>
                   </h3>
-                  <p className="mt-1 text-sm text-gray-500">{product.color}</p>
+                  <p className="mt-1 text-sm text-gray-500">{product.brand}</p>
                 </div>
                 <p className="text-sm font-medium text-gray-900">{product.price}</p>
               </div>
