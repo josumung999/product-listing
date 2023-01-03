@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import Filter from '../components/Filter'
 import Pager from '../components/Pager'
 import ProductGrid from '../components/ProductGrid'
 
@@ -26,6 +27,7 @@ const Home: NextPage = () => {
 
       </header>
       <main>
+        <Filter />
         <ProductGrid />
         <Pager />
       </main>
