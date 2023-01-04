@@ -52,7 +52,7 @@ export default Home
 
 export async function getStaticProps() {
   const client = new ApolloClient({
-    uri: "https://product-listing-drab.vercel.app/api/products",
+    uri: "http://localhost:3000/api/products",
     cache: new InMemoryCache()
   })
 

@@ -6,8 +6,6 @@ const  ProductGrid: React.FC<{ products: any }> = ({ products }) => {
 
   const isEmpty = products.length == 0 ? true : false
 
-  console.log(products)
-
   return (
     <div className="bg-white">
       <div className="py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
