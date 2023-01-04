@@ -9,7 +9,7 @@ type appContextType = {
 }
 
 const appContextDefaultValue: appContextType = {
-  numOfCols: `grid-cols-2`,
+  numOfCols: ``,
   updateNumberOfCols: () => {},
   // filter: {},
   // resetFilter: () => {},
@@ -27,7 +27,7 @@ type props = {
 }
 
 export function AppProvider({ children }: props) {
-  const [numOfCols, setNumOfCols] = useState<string>(``);
+  const [numOfCols, setNumOfCols] = useState<string>(`grid-cols-2`);
   // const [filter, setFilter] = useState<any>({
   //   brand: '',
   //   priceOrder: "",

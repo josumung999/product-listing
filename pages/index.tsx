@@ -7,7 +7,7 @@ import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
 
 const Home: React.FC<{ products: any }> = ({products}) => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <div className="px-4 py-4 sm:px-6 lg:px-8">
       <Head>
         <title>Product Listing Next.js Project</title>
         <link rel="icon" href="/favicon.ico" />
