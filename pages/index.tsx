@@ -1,11 +1,11 @@
-import type { NextPage } from 'next'
+import React from "react"
 import Head from 'next/head'
-import Image from 'next/image'
 import Filter from '../components/Filter'
 import Pager from '../components/Pager'
 import ProductGrid from '../components/ProductGrid'
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
 
-const Home: NextPage = () => {
+const Home: React.FC<{ products: any }> = ({products}) => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <Head>
@@ -25,10 +25,10 @@ const Home: NextPage = () => {
           A Product Listing Page built with Next.js, Tailwind.css and Apollo GraphQL 
         </p>
 
-        <Filter />
       </header>
       <main>
-        <ProductGrid />
+        <Filter />
+        <ProductGrid products={products} />
         <Pager />
       </main>
 
@@ -48,3 +48,31 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: "http://localhost:3000/api/products",
+    cache: new InMemoryCache()
+  })
+
+  const { data } = await client.query({
+    query: gql`
+      query Products {
+        products {
+          id
+          name
+          imageSrc
+          price
+          brand
+        }
+      }
+    `
+  })
+
+  return {
+    props: {
+      products: data.products
+    }
+  }
+}
