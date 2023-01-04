@@ -2,8 +2,7 @@ import React from 'react'
 import { useApp } from '../context/AppContext'
 
 const Filter = () => {
-  const { numOfCols, updateNumberOfCols, updatePageSize } = useApp();
-  console.log(numOfCols)
+  const { updateNumberOfCols, updatePageSize } = useApp();
 
   return (
     <div className="w-full p-5 bg-white">
