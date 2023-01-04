@@ -29,7 +29,7 @@ const Filter = () => {
 
       <div>
         <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
-        <select onChange={(e) => updateNumberOfCols(parseInt(e.target.value))} className="hidden lg:flex px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+        <select onChange={(e) => updateNumberOfCols(e.target.value)} className="hidden lg:flex px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
           <option value="">Number of Cols</option>
           {Array.from(Array(8).keys()).map((item, index) => (
             <option key={index} value={item + 1}>

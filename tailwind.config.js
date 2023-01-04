@@ -5,6 +5,11 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
     './app/**/*.{js,ts,jsx,tsx}',
   ],
+  safelist: [
+    {
+        pattern: /grid-cols-./,
+    }
+  ],
   theme: {
     extend: {},
   },

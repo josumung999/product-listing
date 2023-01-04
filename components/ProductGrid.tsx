@@ -14,7 +14,7 @@ const  ProductGrid: React.FC<{ products: any }> = ({ products }) => {
         <div>
           {isEmpty ? <p>Nothing to show</p>: (
             <div 
-              className={`mt-6 grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6 xl:gap-x-8`}
+              className={`mt-6 grid ${numOfCols} gap-y-10 gap-x-6 xl:gap-x-8`}
             >
               {products.map((product: {
                   imageSrc: string | undefined; imageAlt: string | undefined; name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any //tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',

@@ -1,15 +1,15 @@
 import { createContext, useContext, ReactNode, useState, SetStateAction } from "react";
 
 type appContextType = {
-  numOfCols: number,
-  updateNumberOfCols: (num: number) => void,
+  numOfCols: string,
+  updateNumberOfCols: (num: string) => void,
   // filter: {},
   // resetFilter: () => void,
   // filterResult: () => void,
 }
 
 const appContextDefaultValue: appContextType = {
-  numOfCols: 0,
+  numOfCols: `grid-cols-2`,
   updateNumberOfCols: () => {},
   // filter: {},
   // resetFilter: () => {},
@@ -27,15 +27,15 @@ type props = {
 }
 
 export function AppProvider({ children }: props) {
-  const [numOfCols, setNumOfCols] = useState<number>(8);
+  const [numOfCols, setNumOfCols] = useState<string>(``);
   // const [filter, setFilter] = useState<any>({
   //   brand: '',
   //   priceOrder: "",
   //   searchTerm: ""
   // })
 
-  const updateNumberOfCols = (num: number) => {
-    setNumOfCols(num)
+  const updateNumberOfCols = (num: string) => {
+    setNumOfCols(`grid-cols-${num}`)
   }
 
   // const resetFilter = () => {
