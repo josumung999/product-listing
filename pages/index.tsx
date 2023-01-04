@@ -4,7 +4,6 @@ import Filter from '../components/Filter'
 import Pager from '../components/Pager'
 import ProductGrid from '../components/ProductGrid'
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
-import adImage from './adbanner.jpg'
 
 const Home: React.FC<{ products: any, totalItems: number }> = ({products, totalItems}) => {
   console.log(products)
@@ -62,7 +61,7 @@ export async function getStaticProps() {
   const { data } = await client.query({
     query: gql`
       query {
-        products {
+        products(options: {skip: 0, take: 10}) {
           totalItems
           items {
             id

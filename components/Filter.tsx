@@ -2,7 +2,7 @@ import React from 'react'
 import { useApp } from '../context/AppContext'
 
 const Filter = () => {
-  const { numOfCols, updateNumberOfCols } = useApp();
+  const { numOfCols, updateNumberOfCols, updatePageSize } = useApp();
   console.log(numOfCols)
 
   return (
@@ -43,11 +43,12 @@ const Filter = () => {
             <option value="lowToHigh">Low to High</option>
             <option value="highToLow">High to Low</option>
           </select>
-          <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
-            <option value="">Brand</option>
-            <option value="1">Adidas</option>
-            <option value="2">Nike</option>
-            <option value="3">The North Face</option>
+          <select onChange={(e) => updatePageSize(e.target.value)} className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+            <option value="">Page Size</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
           </select>
 
           <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">

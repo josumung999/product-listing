@@ -1,6 +1,9 @@
 import React from 'react'
+import { useApp } from '../context/AppContext'
 
 const Pager: React.FC<{ totalItems: number }> = ({ totalItems }) => {
+  const { pageSize } = useApp();
+
   console.log(totalItems)
   return (
     <div className="flex items-center justify-between bg-white px-4 py-3 sm:px-6">
@@ -14,7 +17,9 @@ const Pager: React.FC<{ totalItems: number }> = ({ totalItems }) => {
         Showing{" "}
         <span className="font-medium">1</span>{" "}
         to{" "}
-        <span className="font-medium">10</span>{" "}
+        <span className="font-medium">
+          {pageSize}
+        </span>{" "}
         of{" "}
         <span className="font-medium">
           {totalItems}
@@ -32,13 +37,7 @@ const Pager: React.FC<{ totalItems: number }> = ({ totalItems }) => {
           </svg>
         </a>
         {/* <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" --> */}
-        <a aria-current="page" className="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">1</a>
-        <a className="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">2</a>
-        <a className="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">3</a>
-        <span className="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700">...</span>
-        <a className="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 md:inline-flex">8</a>
-        <a className="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">9</a>
-        <a className="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">10</a>
+        <a className="relative z-10 inline-flex items-center px-4 py-2 text-sm font-medium bg-white px-2 py-2 text-sm font-medium text-gray-500 border-none">Page 1</a>
         <a className="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
           <span className="sr-only">Next</span>
           {/* <!-- Heroicon name: mini/chevron-right --> */}

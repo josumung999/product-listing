@@ -2,7 +2,9 @@ import { createContext, useContext, ReactNode, useState, SetStateAction } from "
 
 type appContextType = {
   numOfCols: string,
+  pageSize: number,
   updateNumberOfCols: (num: string) => void,
+  updatePageSize: (size: string) => void,
   // filter: {},
   // resetFilter: () => void,
   // filterResult: () => void,
@@ -10,7 +12,9 @@ type appContextType = {
 
 const appContextDefaultValue: appContextType = {
   numOfCols: ``,
+  pageSize: 5,
   updateNumberOfCols: () => {},
+  updatePageSize: () => {}
   // filter: {},
   // resetFilter: () => {},
   // filterResult: () => {},
@@ -34,9 +38,16 @@ export function AppProvider({ children }: props) {
   //   searchTerm: ""
   // })
 
+  const [pageSize, setPageSize] = useState<number>(5)
+
   const updateNumberOfCols = (num: string) => {
     setNumOfCols(`grid-cols-${num}`)
   }
+
+  const updatePageSize = (size: string) => {
+    setPageSize(parseInt(size))
+  }
+  
 
   // const resetFilter = () => {
   //   setFilter({
@@ -56,8 +67,10 @@ export function AppProvider({ children }: props) {
 
   const value = {
     numOfCols,
+    pageSize,
     // filter,
     updateNumberOfCols,
+    updatePageSize,
     // filterResult,
     // resetFilter
   }
