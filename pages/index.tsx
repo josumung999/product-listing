@@ -4,6 +4,7 @@ import Filter from '../components/Filter'
 import Pager from '../components/Pager'
 import ProductGrid from '../components/ProductGrid'
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
+import adImage from './adbanner.jpg'
 
 const Home: React.FC<{ products: any }> = ({products}) => {
   return (
@@ -69,6 +70,22 @@ export async function getStaticProps() {
       }
     `
   })
+
+  // const sliceArrayIntoGroups = (arr: any, size: number) => {
+  //   var step = 0, sliceArr = [], len = arr.length;
+  //   while (step < len) {
+  //     sliceArr.push(arr.slice(step, step += size));
+  //   }
+  //   return sliceArr;
+  // }
+
+  // const groupArticle = sliceArrayIntoGroups(data.products, 8);
+  // const ad = adImage
+
+  // const products = groupArticle.map((item, index) => ({
+  //   articles: item,
+  //   ad: adImage[index]
+  // }))
 
   return {
     props: {

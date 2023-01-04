@@ -29,36 +29,34 @@ const Filter = () => {
 
       <div>
         <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
-        <select onChange={(e) => updateNumberOfCols(e.target.value)} className="hidden lg:flex px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
-          <option value="">Number of Cols</option>
-          {Array.from(Array(8).keys()).map((item, index) => (
-            <option key={index} value={item + 1}>
-              {item + 1}
-            </option>
-          ))}
-        </select>
+          <select onChange={(e) => updateNumberOfCols(e.target.value)} className="hidden lg:flex px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+            <option value="">Number of Cols</option>
+            {Array.from(Array(8).keys()).map((item, index) => (
+              <option key={index} value={item + 1}>
+                {item + 1}
+              </option>
+            ))}
+          </select>
 
-        <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
-          <option value="">Prices</option>
-          <option value="lowToHigh">Low to High</option>
-          <option value="highToLow">High to Low</option>
-        </select>
+          <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+            <option value="">Prices</option>
+            <option value="lowToHigh">Low to High</option>
+            <option value="highToLow">High to Low</option>
+          </select>
+          <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+            <option value="">Brand</option>
+            <option value="1">Adidas</option>
+            <option value="2">Nike</option>
+            <option value="3">The North Face</option>
+          </select>
 
-        <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
-          <option value="">Categories</option>
-          <option value="200">T-shirts</option>
-          <option value="400">Trousers</option>
-          <option value="600">Track suits</option>
-          <option value="800 sq.ft">Suits</option>
-          <option value="1000 sq.ft">Shoes</option>
-        </select>
+          <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+            <option value="">Ad Position</option>
+            <option value="200">Top</option>
+            <option value="600">Track suits</option> 
+            <option value="400">Middle</option>
+          </select>
 
-        <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
-          <option value="">Brand</option>
-          <option value="1">Adidas</option>
-          <option value="2">Nike</option>
-          <option value="3">The North Face</option>
-        </select>
         </div>
       </div>
   </div>
