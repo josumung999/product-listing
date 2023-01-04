@@ -85,7 +85,7 @@ export default function ProductGrid() {
 
         <div>
           <div 
-            className={`mt-6 grid grid-cols-${numOfCols} gap-y-10 gap-x-6 xl:gap-x-8`}
+            className={`mt-6 grid grid-cols-2 lg:grid-cols-5 gap-y-10 gap-x-6 xl:gap-x-8`}
           >
             {products.map((product, index) => (
               <div key={index} className="group relative">
