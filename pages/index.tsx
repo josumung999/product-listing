@@ -32,7 +32,7 @@ const Home: React.FC<{ products: any, totalItems: number }> = ({products, totalI
       <main>
         <Filter />
         <ProductGrid products={products} />
-        <Pager />
+        <Pager totalItems={totalItems} />
       </main>
 
       <footer className="flex h-24 w-full items-center justify-center border-t">

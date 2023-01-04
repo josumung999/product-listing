@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Pager = () => {
+const Pager: React.FC<{ totalItems: number }> = ({ totalItems }) => {
+  console.log(totalItems)
   return (
     <div className="flex items-center justify-between bg-white px-4 py-3 sm:px-6">
   <div className="flex flex-1 justify-between sm:hidden">
@@ -15,7 +16,9 @@ const Pager = () => {
         to{" "}
         <span className="font-medium">10</span>{" "}
         of{" "}
-        <span className="font-medium">97</span>{" "}
+        <span className="font-medium">
+          {totalItems}
+        </span>{" "}
         results
       </p>
     </div>
