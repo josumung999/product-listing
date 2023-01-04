@@ -6,7 +6,9 @@ import ProductGrid from '../components/ProductGrid'
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
 import adImage from './adbanner.jpg'
 
-const Home: React.FC<{ products: any }> = ({products}) => {
+const Home: React.FC<{ products: any, totalItems: number }> = ({products, totalItems}) => {
+  console.log(products)
+  
   return (
     <div className="px-4 py-4 sm:px-6 lg:px-8">
       <Head>
@@ -53,43 +55,35 @@ export default Home
 
 export async function getStaticProps() {
   const client = new ApolloClient({
-    uri: "http://localhost:3000/api/products",
+    uri: "https://demo.vendure.io/shop-api",
     cache: new InMemoryCache()
   })
 
   const { data } = await client.query({
     query: gql`
-      query Products {
+      query {
         products {
-          id
-          name
-          imageSrc
-          price
-          brand
+          totalItems
+          items {
+            id
+            name
+            slug
+            featuredAsset {
+              id
+              width
+              height
+              source
+            }
+          }
         }
       }
     `
   })
 
-  // const sliceArrayIntoGroups = (arr: any, size: number) => {
-  //   var step = 0, sliceArr = [], len = arr.length;
-  //   while (step < len) {
-  //     sliceArr.push(arr.slice(step, step += size));
-  //   }
-  //   return sliceArr;
-  // }
-
-  // const groupArticle = sliceArrayIntoGroups(data.products, 8);
-  // const ad = adImage
-
-  // const products = groupArticle.map((item, index) => ({
-  //   articles: item,
-  //   ad: adImage[index]
-  // }))
-
   return {
     props: {
-      products: data.products
+      products: data.products.items,
+      totalItems: data.products.totalItems
     }
   }
 }
