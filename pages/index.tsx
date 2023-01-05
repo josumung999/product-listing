@@ -4,6 +4,7 @@ import Filter from '../components/Filter'
 import Pager from '../components/Pager'
 import ProductGrid from '../components/ProductGrid'
 import { ApolloClient, InMemoryCache, gql, useQuery } from "@apollo/client"
+import { useApp } from "../context/AppContext"
 
 const client = new ApolloClient({
   uri: "https://demo.vendure.io/shop-api",
@@ -12,8 +13,8 @@ const client = new ApolloClient({
 
 
 const LIST_PRODUCTS =     gql`
-  query {
-    products(options: {skip: 0, take: 10}) {
+  query ListProducts($limit: Int!, $offSet: Int!) {
+    products(options: {skip: $offSet, take: $limit}) {
       totalItems
       items {
         id
@@ -35,7 +36,15 @@ const LIST_PRODUCTS =     gql`
 `
 
 const Home = () => {
-  const { data, loading, error } = useQuery(LIST_PRODUCTS, { client });
+  const { pageSize, page } = useApp()
+
+  const { data, loading, error } = useQuery(LIST_PRODUCTS, { 
+    client,
+    variables: {
+      limit: pageSize,
+      offSet: page * pageSize
+    }
+  });
 
   if (loading) {
     return <div className="px-4 py-4 sm:px-6 lg:px-8">Loading ...</div>
