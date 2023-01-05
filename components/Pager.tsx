@@ -5,10 +5,10 @@ const Pager: React.FC<{ totalItems: number }> = ({ totalItems }) => {
   const { pageSize, setPage, page } = useApp();
   return (
     <div className="flex items-center justify-between bg-white px-4 py-3 sm:px-6">
-  <div className="flex flex-1 justify-between sm:hidden">
-    <a className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
-    <a className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
-  </div>
+      <div className="flex flex-1 justify-between sm:hidden">
+        <button disabled={!page} onClick={(e) => setPage((prev: number) => prev - 1)} className="relative inline-flex items-center rounded-md border disabled:bg-gray-300 border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</button>
+        <button onClick={(e) => setPage((prev: number) => prev + 1)} className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</button>
+      </div>
   <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
     <div>
       <p className="text-sm text-gray-700">
