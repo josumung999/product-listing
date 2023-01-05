@@ -3,7 +3,7 @@ import { useApp } from "../context/AppContext"
 import AdBanner from "./AdBanner";
 
 const  ProductGrid: React.FC<{ products: any }> = ({ products }) => {
-  const { numOfCols } = useApp();
+  const { numOfCols, adPosition, pageSize } = useApp();
 
   const isEmpty = products.length == 0 ? true : false
 
@@ -15,6 +15,7 @@ const  ProductGrid: React.FC<{ products: any }> = ({ products }) => {
         <div>
           {isEmpty ? <p>Nothing to show</p>: (
             <>
+              {adPosition == 'top' && <AdBanner />}
               <div 
                 className={`mt-6 grid ${numOfCols} gap-y-10 gap-x-6 xl:gap-x-8`}
               >
@@ -48,7 +49,7 @@ const  ProductGrid: React.FC<{ products: any }> = ({ products }) => {
                   </div>
                 ))}
               </div>
-              <AdBanner />
+              {adPosition == 'bottom' && <AdBanner />}
             </>
           )}
 
