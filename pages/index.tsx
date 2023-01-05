@@ -71,6 +71,10 @@ export async function getStaticProps() {
               width
               height
               source
+            }  
+            variants {
+              id
+              priceWithTax
             }
           }
         }

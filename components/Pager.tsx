@@ -3,8 +3,6 @@ import { useApp } from '../context/AppContext'
 
 const Pager: React.FC<{ totalItems: number }> = ({ totalItems }) => {
   const { pageSize } = useApp();
-
-  console.log(totalItems)
   return (
     <div className="flex items-center justify-between bg-white px-4 py-3 sm:px-6">
   <div className="flex flex-1 justify-between sm:hidden">

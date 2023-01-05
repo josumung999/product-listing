@@ -21,6 +21,7 @@ const  ProductGrid: React.FC<{ products: any }> = ({ products }) => {
                 {products.map((product: { 
                   name: string; 
                   featuredAsset: any,
+                  variants: any
                   }, index: Key | null | undefined) => (
                   <div key={index} className="group relative">
                     <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
@@ -40,7 +41,9 @@ const  ProductGrid: React.FC<{ products: any }> = ({ products }) => {
                         </h3>
                         <p className="mt-1 text-sm text-gray-500">Adidas</p>
                       </div>
-                      <p className="text-sm font-medium text-gray-900">$ 32</p>
+                      <p className="text-sm font-medium text-gray-900">
+                        {new Intl.NumberFormat('en-US', { style: 'currency', currency: "USD" }).format(get1stPrice(product.variants))}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -57,6 +60,12 @@ const  ProductGrid: React.FC<{ products: any }> = ({ products }) => {
   )
 }
 
+
+
+
+export const get1stPrice = (arr: any[]) => {
+  return arr[0].priceWithTax
+}
 
 
 export default ProductGrid
