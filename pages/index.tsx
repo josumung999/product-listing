@@ -3,9 +3,55 @@ import Head from 'next/head'
 import Filter from '../components/Filter'
 import Pager from '../components/Pager'
 import ProductGrid from '../components/ProductGrid'
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
+import { ApolloClient, InMemoryCache, gql, useQuery } from "@apollo/client"
 
-const Home: React.FC<{ products: any, totalItems: number }> = ({products, totalItems}) => {
+const client = new ApolloClient({
+  uri: "https://demo.vendure.io/shop-api",
+  cache: new InMemoryCache()
+})
+
+
+const LIST_PRODUCTS =     gql`
+  query {
+    products(options: {skip: 0, take: 10}) {
+      totalItems
+      items {
+        id
+        name
+        slug
+        featuredAsset {
+          id
+          width
+          height
+          source
+        }  
+        variants {
+          id
+          priceWithTax
+        }
+      }
+    }
+  }
+`
+
+const Home = () => {
+  const { data, loading, error } = useQuery(LIST_PRODUCTS, { client });
+
+  if (loading) {
+    return <div className="px-4 py-4 sm:px-6 lg:px-8">Loading ...</div>
+  }
+  
+
+  if (error) {
+    return (
+      <div className="px-4 py-4 sm:px-6 lg:px-8">
+        {error.message}
+      </div>
+    )
+  }
+
+  const products = data.products.items;
+  const totalItems = data.products.totalItems;
   
   return (
     <div className="px-4 py-4 sm:px-6 lg:px-8">
@@ -49,43 +95,3 @@ const Home: React.FC<{ products: any, totalItems: number }> = ({products, totalI
 }
 
 export default Home
-
-
-export async function getStaticProps() {
-  const client = new ApolloClient({
-    uri: "https://demo.vendure.io/shop-api",
-    cache: new InMemoryCache()
-  })
-
-  const { data } = await client.query({
-    query: gql`
-      query {
-        products(options: {skip: 0, take: 10}) {
-          totalItems
-          items {
-            id
-            name
-            slug
-            featuredAsset {
-              id
-              width
-              height
-              source
-            }  
-            variants {
-              id
-              priceWithTax
-            }
-          }
-        }
-      }
-    `
-  })
-
-  return {
-    props: {
-      products: data.products.items,
-      totalItems: data.products.totalItems
-    }
-  }
-}
