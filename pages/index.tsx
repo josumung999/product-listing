@@ -46,6 +46,7 @@ const Home = () => {
     }
   });
 
+    
   if (loading) {
     return <div className="px-4 py-4 sm:px-6 lg:px-8">Loading ...</div>
   }
@@ -59,8 +60,11 @@ const Home = () => {
     )
   }
 
-  const products = data.products.items;
-  const totalItems = data.products.totalItems;
+
+  // const products = data.products.items;
+  // const totalItems = data.products.totalItems;
+
+  const { items: products, totalItems } = data.products
   
   return (
     <div className="px-4 py-4 sm:px-6 lg:px-8">
