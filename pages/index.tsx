@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Filter from '../components/Filter'
 import Pager from '../components/Pager'
 import ProductGrid from '../components/ProductGrid'
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
 
 const Home: React.FC<{ products: any, totalItems: number }> = ({products, totalItems}) => {
   console.log(products)
@@ -49,3 +50,39 @@ const Home: React.FC<{ products: any, totalItems: number }> = ({products, totalI
 }
 
 export default Home
+
+
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: "https://demo.vendure.io/shop-api",
+    cache: new InMemoryCache()
+  })
+
+  const { data } = await client.query({
+    query: gql`
+      query {
+        products(options: {skip: 0, take: 10}) {
+          totalItems
+          items {
+            id
+            name
+            slug
+            featuredAsset {
+              id
+              width
+              height
+              source
+            }
+          }
+        }
+      }
+    `
+  })
+
+  return {
+    props: {
+      products: data.products.items,
+      totalItems: data.products.totalItems
+    }
+  }
+}
