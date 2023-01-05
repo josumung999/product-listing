@@ -57,7 +57,7 @@ const  ProductGrid: React.FC<{ products: any }> = ({ products }) => {
                   <div 
                     className={`mt-6 grid ${numOfCols} gap-y-10 gap-x-6 xl:gap-x-8`}
                   >
-                    {products.slice(middleOfList).map((product: { 
+                    {products.slice(0, middleOfList).map((product: { 
                       name: string; 
                       featuredAsset: any,
                       variants: any
