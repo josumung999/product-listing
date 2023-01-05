@@ -7,9 +7,6 @@ type appContextType = {
   updateNumberOfCols: (num: string) => void,
   updatePageSize: (size: string) => void,
   setPage: (page: any) => void,
-  // filter: {},
-  // resetFilter: () => void,
-  // filterResult: () => void,
 }
 
 const appContextDefaultValue: appContextType = {
@@ -19,9 +16,6 @@ const appContextDefaultValue: appContextType = {
   updateNumberOfCols: () => {},
   updatePageSize: () => {},
   setPage: () => {}
-  // filter: {},
-  // resetFilter: () => {},
-  // filterResult: () => {},
 }
 
 const AppContext = createContext<appContextType>(appContextDefaultValue);
@@ -36,11 +30,6 @@ type props = {
 
 export function AppProvider({ children }: props) {
   const [numOfCols, setNumOfCols] = useState<string>(`grid-cols-2`);
-  // const [filter, setFilter] = useState<any>({
-  //   brand: '',
-  //   priceOrder: "",
-  //   searchTerm: ""
-  // })
 
   const [pageSize, setPageSize] = useState<number>(5)
   const [page, setPage] = useState<number>(0);
@@ -52,34 +41,14 @@ export function AppProvider({ children }: props) {
   const updatePageSize = (size: string) => {
     setPageSize(parseInt(size))
   }
-  
-
-  // const resetFilter = () => {
-  //   setFilter({
-  //     brand: '',
-  //     priceOrder: "",
-  //     searchTerm: ""
-  //   })
-  // }
-
-  // const filterResult = ({ brandName, pricing, searchQuery }: any) => {
-  //   setFilter({
-  //     brand: brandName,
-  //     priceOrder: pricing,
-  //     searchTerm: searchQuery
-  //   })
-  // }
 
   const value = {
     numOfCols,
     pageSize,
     page,
-    // filter,
     updateNumberOfCols,
     updatePageSize,
-    setPage,
-    // filterResult,
-    // resetFilter
+    setPage
   }
 
   return (
