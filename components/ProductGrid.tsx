@@ -1,11 +1,17 @@
-import { Key } from "react";
+import { Key, useState } from "react";
 import { useApp } from "../context/AppContext"
 import AdBanner from "./AdBanner";
 
 const  ProductGrid: React.FC<{ products: any }> = ({ products }) => {
-  const { numOfCols } = useApp();
+  const { numOfCols, pageSize } = useApp();
+
+  const [productsNum, setProductsNum] = useState(pageSize);
 
   const isEmpty = products.length == 0 ? true : false
+
+  const handleLoadMore = () => {
+    setProductsNum(prevProductNum => prevProductNum + pageSize)
+  }
 
   return (
     <div className="bg-white">
@@ -18,7 +24,7 @@ const  ProductGrid: React.FC<{ products: any }> = ({ products }) => {
               <div 
                 className={`mt-6 grid ${numOfCols} gap-y-10 gap-x-6 xl:gap-x-8`}
               >
-                {products.map((product: { 
+                {products.slice(0, productsNum).map((product: { 
                   name: string; 
                   featuredAsset: any,
                   }, index: Key | null | undefined) => (
@@ -48,10 +54,15 @@ const  ProductGrid: React.FC<{ products: any }> = ({ products }) => {
               <AdBanner />
             </>
           )}
-
-
         </div>
-
+        <div className="my-6 flex items-center justify-center">
+          <button 
+            onClick={handleLoadMore}
+            className="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-indigo-500 hover:text-white transition duration-200 rounded shadow-md md:w-auto bg-white hover:bg-indigo-700 focus:shadow-outline focus:outline-none"
+          >
+            Load More
+          </button>
+        </div>
       </div>
     </div>
   )
