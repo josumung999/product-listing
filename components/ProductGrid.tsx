@@ -54,6 +54,7 @@ const  ProductGrid: React.FC<{ products: any }> = ({ products }) => {
                 </div>
               ): (
                 <>
+                {/* Display the first slice of the product list */}
                   <div 
                     className={`mt-6 grid ${numOfCols} gap-y-10 gap-x-6 xl:gap-x-8`}
                   >
@@ -86,9 +87,15 @@ const  ProductGrid: React.FC<{ products: any }> = ({ products }) => {
                         </div>
                       </div>
                     ))}
-                    
                   </div>
+                {/* End Display the first slice of the product list */}
+
+                {/* Display the AdBanner in the middle of the list */}
                   <AdBanner />
+                {/* End Display the AdBanner in the middle of the list */}
+
+                {/* Display the second slice of the product list */}
+
                   <div 
                     className={`mt-6 grid ${numOfCols} gap-y-10 gap-x-6 xl:gap-x-8`}
                   >
@@ -122,8 +129,9 @@ const  ProductGrid: React.FC<{ products: any }> = ({ products }) => {
                       </div>
                     ))}
                   </div>
-                </>
 
+                  {/* End Display the second slice of the product list */}
+                </>
               )}
               
               {adPosition == 'bottom' && <AdBanner />}
