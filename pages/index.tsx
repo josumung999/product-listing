@@ -6,7 +6,6 @@ import ProductGrid from '../components/ProductGrid'
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
 
 const Home: React.FC<{ products: any, totalItems: number }> = ({products, totalItems}) => {
-  console.log(products)
   
   return (
     <div className="px-4 py-4 sm:px-6 lg:px-8">
