@@ -43,11 +43,11 @@ const Filter = () => {
             <option value="highToLow">High to Low</option>
           </select>
           <select onChange={(e) => updatePageSize(e.target.value)} className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
-            <option value="5">Page Size</option>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="20">20</option>
+            <option value="6">Page Size</option>
+            <option value="6">6</option>
+            <option value="12">12</option>
+            <option value="18">18</option>
+            <option value="24">24</option>
           </select>
 
           <select value={adPosition} onChange={(e) => setAdPosition(e.target.value)} className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">

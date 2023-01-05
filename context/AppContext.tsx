@@ -13,7 +13,7 @@ type appContextType = {
 
 const appContextDefaultValue: appContextType = {
   numOfCols: ``,
-  pageSize: 5,
+  pageSize: 6,
   page: 0,
   adPosition: 'top',
   updateNumberOfCols: () => {},
@@ -35,7 +35,7 @@ type props = {
 export function AppProvider({ children }: props) {
   const [numOfCols, setNumOfCols] = useState<string>(`grid-cols-2`);
 
-  const [pageSize, setPageSize] = useState<number>(5)
+  const [pageSize, setPageSize] = useState<number>(6)
   const [page, setPage] = useState<number>(0);
   const [adPosition, setAdPosition] = useState<string>('top');
 
